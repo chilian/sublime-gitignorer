@@ -65,14 +65,11 @@ def update_file_exclude_patterns():
 
     new_files = set(file_exclude_patterns)
     old_files = set(s.get('binary_file_patterns', []) or [])
-    new_folders = set(folder_exclude_patterns)
-    old_folders = set(s.get('binary_file_patterns', []) or [])
 
     # Only make changes if anything has actually changed, to avoid spamming the
     # sublime console
-    if new_files != old_files or new_folders != old_folders:
+    if new_files != old_files
         s.set('binary_file_patterns', list(file_exclude_patterns))
-        s.set('binary_file_patterns', list(folder_exclude_patterns))
         sublime.save_settings("Preferences.sublime-settings")
 
 def all_ignored_paths():
@@ -199,12 +196,6 @@ def migrate_exclude_patterns():
     Runs on first launch; purpose is to prevent people who have already set
     exclusion patterns from losing them when they install this package.
     """
-    s = sublime.load_settings("Preferences.sublime-settings")
-    existing_file_exclude_patterns = s.get('binary_file_patterns', []) or []
-    existing_folder_exclude_patterns = s.get('binary_file_patterns', []) or []
-    s.set('extra_file_exclude_patterns', existing_file_exclude_patterns)
-    s.set('extra_folder_exclude_patterns', existing_folder_exclude_patterns)
-    sublime.save_settings("Preferences.sublime-settings")
 
 def record_first_launch():
     s = sublime.load_settings("gitignorer.sublime-settings")
