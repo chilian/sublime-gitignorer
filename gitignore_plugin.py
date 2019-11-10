@@ -43,8 +43,8 @@ def update_file_exclude_patterns():
     "extra_file_exclude_patterns" and "extra_folder_exclude_patterns" settings.
     """
     s = sublime.load_settings("Preferences.sublime-settings")
-    file_exclude_patterns = s.get('extra_file_exclude_patterns', []) or []
-    folder_exclude_patterns = s.get('extra_folder_exclude_patterns', []) or []
+    file_exclude_patterns = s.get('binary_file_patterns', []) or []
+    folder_exclude_patterns = s.get('binary_file_patterns', []) or []
     for path in all_ignored_paths():
         is_directory = os.path.isdir(path)
         if platform.system() == 'Windows':
@@ -59,6 +59,7 @@ def update_file_exclude_patterns():
             path = windows_path_to_sublime_path(path)
         if is_directory:
             folder_exclude_patterns.append(path)
+            folder_exclude_patterns.append(path + '/*')
         else:
             file_exclude_patterns.append(path)
 
