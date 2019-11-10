@@ -1,7 +1,7 @@
 sublime-gitignorer
 ==================
 
-Sublime plugin that excludes from your Sublime project any files ignored by git.
+Sublime plugin that excludes from your Sublime search bar any files ignored by git.
 
 Created as a solution to http://stackoverflow.com/questions/18482976/tell-sublime-text-to-ignore-everything-in-gitignore
 
