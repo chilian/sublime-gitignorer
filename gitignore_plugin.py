@@ -68,7 +68,7 @@ def update_file_exclude_patterns():
 
     # Only make changes if anything has actually changed, to avoid spamming the
     # sublime console
-    if new_files != old_files
+    if new_files != old_files:
         s.set('binary_file_patterns', list(file_exclude_patterns))
         sublime.save_settings("Preferences.sublime-settings")
 
