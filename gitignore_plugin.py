@@ -22,7 +22,7 @@ else:
 
 def start(): # Gets invoked at the bottom of this file.
     """
-    Regularly (every 5s) updates the file_exclude_patterns setting.
+    Regularly (every 1h) updates the file_exclude_patterns setting.
     """
     if is_first_launch():
         migrate_exclude_patterns()
@@ -30,7 +30,7 @@ def start(): # Gets invoked at the bottom of this file.
 
     def run():
         update_file_exclude_patterns()
-        sublime.set_timeout(run, 5000)
+        sublime.set_timeout(run, 1000 * 3600)
 
     run()
 
